@@ -3,6 +3,7 @@ import ExpenseItem from './ExpenseItem';
 const ExpenseList=({expenses}) => { //takes expenses prop & maps through it to render each item
     
     // basic HTML table
+    
     return (
         <table>
             <thead>

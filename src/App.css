@@ -1,0 +1,81 @@
+/* App.css */
+body {
+    background-color: #1f1f2e;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2a2a3d;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  
+  form {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  form input,
+  form button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  form input {
+    background-color: #3a3a50;
+    color: #fff;
+  }
+  
+  form input:focus {
+    outline: 2px solid #6c63ff;
+  }
+  
+  form button {
+    background-color: #6c63ff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #5a54d1;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #3a3a50;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #4b4b61;
+  }
+  
+  th {
+    background-color: #4b4b61;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
