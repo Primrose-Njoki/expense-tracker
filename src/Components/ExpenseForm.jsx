@@ -1,70 +1,75 @@
-//users input data
-import react,{useState} from 'react;'
-const ExpenseForm =({onAddExpense})=> { //ExpenseForm is a component that takes a prop(onAddExpense)
-// variables holding the form input values
-    const[title,setTitle]=useState('');
-    const[describtion,setDescribtion]=useState('');
-    const[amount,setAmount]=useState('');
-    const[date,setDate]=useState('');
+import React, { useState } from 'react';
+import './ExpenseForm.css';
+function ExpenseForm({ onAddExpense }) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
 
-    const handleSubmit=(e)=>{ // prevents the page from refreshing
-        e.preventDefault();
-        
-        if(!title || !describtion || !amount || !date) return; //if the field is empty the form won't submit
-
-        onAddExpense({ // creates new expense sends to the App using(onAddExpenses)
-            id:Date.now(),
-            title,
-            describtion,
-            amount,
-            date,
-
-        });
-
-        setTitle(''); // resets for users to add new item
-        setDescribtion('');
-        setAmount('');
-        setDate('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newExpense = {
+      title,
+      description,
+      amount: parseFloat(amount),
+      date,
+      id: Date.now()
     };
-    return ( //renders the form and attaches the handleSubmit to onSubmit event
-   
-        <form onSubmit={handleSubmit}> 
-        
-        
-    
-        <input 
-        type="text" // determines the input eg.text,date,number
-        placeholder='Expense Title'//shows the hint
-        value={title} // onChange updates state as user types
-        onChange={(e)=>setTitle(e.target.value)}/>  
+    onAddExpense(newExpense);
+    setTitle('');
+    setDescription('');
+    setAmount('');
+    setDate('');
+  };
 
+  return (
+    <form onSubmit={handleSubmit} className="expense-form">
+      <h2>Expense Title</h2>
+      <div className="form-group">
         <input
-        type='text'
-        placeholder='Description'
-        value={describtion}
-        onChange={(e)=>setDescribtion(e.target.value)}/>
-
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter title"
+          required
+        />
+      </div>
+      
+      <h3>Description</h3>
+      <div className="form-group">
         <input
-        type='number'
-        placeholder='Amount'
-        value={amount}
-        onChange={(e)=>setAmount(e.target.value)}/>
-
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter description"
+        />
+      </div>
+      
+      <h3>Amount</h3>
+      <div className="form-group">
         <input
-        type='date'
-        value={date}
-        onChange={(e)=> setDate(e.target.value)}/>
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder="Enter amount"
+          required
+          min="0"
+          step="0.01"
+        />
+      </div>
+      
+      <div className="form-group">
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
 
-        
-        <button type='submit'>Submit</button> 
-
-        </form> 
-    );
-};
-export default ExpenseForm; // makes this component available for use in other files 
-   
-
-    
-
-    
-
+export default ExpenseForm;
